@@ -50,10 +50,9 @@ int sum_array(int *ptr, int size) {
   return sum;
 }
 
-double average(int *arr, int size) {
+void average(int *arr, int size, double *ave) {
   double sum = (double)sum_array(arr, size);
-  double ave = sum / size;
-  return ave;
+  *ave = sum / size;
 }
 
 int main() {
@@ -61,12 +60,14 @@ int main() {
   int arr[SIZE];
   int key = 12;
   int min, max;
+  double ave;
 
   inputArray(arr, SIZE);
   displayArray(arr, SIZE);
+  average(arr, SIZE, &ave);
 
   printf("sum of value: %d\n", sum_array(arr, SIZE));
-  printf("Average: %f\n", average(arr, SIZE));
+  printf("Average: %f\n", ave);
 
   minMax(arr, SIZE, &min, &max);
 
