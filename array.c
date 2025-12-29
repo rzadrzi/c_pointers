@@ -57,10 +57,7 @@ double average(int *arr, int size) {
 }
 
 int main() {
-  int grades[SIZE] = {101, 225, 32, 41};
 
-  // printf("%d bits\n", (int)(CHAR_BIT * sizeof(void *)));
-  // printf("%ld\n", sizeof(int));
   int arr[SIZE];
   int key = 12;
   int min, max;
@@ -69,7 +66,7 @@ int main() {
   displayArray(arr, SIZE);
 
   printf("sum of value: %d\n", sum_array(arr, SIZE));
-  printf("Average: %f\n", average(grades, SIZE));
+  printf("Average: %f\n", average(arr, SIZE));
 
   minMax(arr, SIZE, &min, &max);
 
