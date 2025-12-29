@@ -24,16 +24,24 @@ void displayArray(int *arr, int size) {
   }
   printf("}\n");
 }
-int sum_array(int arr[], int size) {
-  int sum = 0;
+
+void minMax(int *arr, int size, int *min, int *max) {
   int i;
+  *min = arr[0];
+  *max = arr[0];
+
   for (i = 0; i < size; i++) {
-    sum += arr[i];
+    if (arr[i] > *max) {
+      *max = arr[i];
+    }
+
+    if (arr[i] < *min) {
+      *min = arr[i];
+    }
   }
-  return sum;
 }
 
-int sum_array_by_pointer(int *ptr, int size) {
+int sum_array(int *ptr, int size) {
   int sum = 0;
   int i;
   for (i = 0; i < size; i++) {
@@ -42,33 +50,8 @@ int sum_array_by_pointer(int *ptr, int size) {
   return sum;
 }
 
-int find_if_key_in_array(int *arr, int size, int key) {
-  int i;
-  int val = -1;
-
-  for (i = 0; i < size; i++) {
-    if (arr[i] == key) {
-      val = i;
-    }
-  }
-
-  return val;
-}
-
-int findMax(int *arr, int size) {
-  int max = arr[0];
-  int i;
-
-  for (i = 0; i < size; i++) {
-    if (arr[i] > max) {
-      max = arr[i];
-    }
-  }
-  return max;
-}
-
 double average(int *arr, int size) {
-  double sum = (double)sum_array_by_pointer(arr, size);
+  double sum = (double)sum_array(arr, size);
   double ave = sum / size;
   return ave;
 }
@@ -76,25 +59,20 @@ double average(int *arr, int size) {
 int main() {
   int grades[SIZE] = {101, 225, 32, 41};
 
-  printf("%d bits\n", (int)(CHAR_BIT * sizeof(void *)));
-  printf("%ld\n", sizeof(int));
+  // printf("%d bits\n", (int)(CHAR_BIT * sizeof(void *)));
+  // printf("%ld\n", sizeof(int));
+  int arr[SIZE];
+  int key = 12;
+  int min, max;
 
-  int sum = sum_array(grades, SIZE);
-  printf("sum of value: %d\n", sum);
+  inputArray(arr, SIZE);
+  displayArray(arr, SIZE);
 
-  int sum_by_ptr = sum_array_by_pointer(grades, SIZE);
-  printf("sum of values using pointer: %d\n", sum_by_ptr);
-
-  int find = find_if_key_in_array(grades, SIZE, 1);
-  printf("find it: %d\n", find);
-
-  printf("Max: %d\n", findMax(grades, SIZE));
-
+  printf("sum of value: %d\n", sum_array(arr, SIZE));
   printf("Average: %f\n", average(grades, SIZE));
 
-  int new_arr[SIZE];
+  minMax(arr, SIZE, &min, &max);
 
-  inputArray(new_arr, SIZE);
-  displayArray(new_arr, SIZE);
+  printf("min: %d, max: %d\n", min, max);
   return 0;
 }
