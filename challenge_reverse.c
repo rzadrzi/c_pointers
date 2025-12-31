@@ -28,6 +28,13 @@ void reverseArrIteration(int *arr, int size) {
   }
 }
 
+void reverseArrRecursive(int *arr, int size) {
+  if (size > 1) {
+    swap(&arr[0], &arr[size - 1]);
+    reverseArrRecursive(arr + 1, size - 2);
+  }
+}
+
 int main() {
 
   int arr[SIZE] = {1, 2, 3, 4, 5, 6};
@@ -36,5 +43,9 @@ int main() {
 
   reverseArrIteration(arr, SIZE);
   printf("After iterative reverse: ");
+  printArray(arr, SIZE);
+
+  reverseArrRecursive(arr, SIZE);
+  printf("Before recursive reverse: ");
   printArray(arr, SIZE);
 }
