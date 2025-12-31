@@ -1,7 +1,7 @@
 // Challenge reverse
 #include <stdio.h>
 
-#define SIZE 5
+#define SIZE 6
 
 void swap(int *a, int *b) {
   int temp = *a;
@@ -14,23 +14,27 @@ void printArray(int *arr, int size) {
   printf("{");
   for (i = 0; i < size; i++) {
     printf("%d", arr[i]);
-    if (i != size) {
+    if (i != size - 1) {
       printf(", ");
     }
   }
   printf("}\n");
 }
 
-int reverse(int *arr, int size) {
-
-  int revese[size];
+void reverseArrIteration(int *arr, int size) {
   int i;
-
-  return 0;
+  for (i = 0; i < size / 2; i++) {
+    swap(&arr[i], &arr[size - 1 - i]);
+  }
 }
 
 int main() {
 
-  int arr[SIZE] = {1, 2, 3, 4, 5};
+  int arr[SIZE] = {1, 2, 3, 4, 5, 6};
+  printf("Before reverse: ");
+  printArray(arr, SIZE);
+
+  reverseArrIteration(arr, SIZE);
+  printf("After iterative reverse: ");
   printArray(arr, SIZE);
 }
