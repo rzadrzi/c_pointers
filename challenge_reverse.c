@@ -31,6 +31,7 @@ void reverseArrIteration(int *arr, int size) {
 void reverseArrRecursive(int *arr, int size) {
   if (size > 1) {
     swap(&arr[0], &arr[size - 1]);
+    // swap(arr, arr + size - 1); pointer Arithmetic
     reverseArrRecursive(arr + 1, size - 2);
   }
 }
